@@ -1,0 +1,11 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name: HNES
+      cluster-nodes: 127.0.0.1:19300
+#      properties:
+#        cluster.name: HNES
+#        client.transport.ping_timeout: 60s
+#        client.transport.nodes_sampler_interval: 30s
+#        client.transport.sniff: true
+#        client.transport.ignore_cluster_name: false

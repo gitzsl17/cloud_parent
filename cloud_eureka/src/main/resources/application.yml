@@ -1,0 +1,19 @@
+server:
+  port: 1024
+
+spring:
+  application:
+    name: eureka-server-test
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: localhost
+  server:
+    enable-self-preservation: true
+    renewal-percent-threshold: 0.49
+    eviction-interval-timer-in-ms: 60000

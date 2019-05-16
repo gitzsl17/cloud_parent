@@ -1,0 +1,22 @@
+一, 版本
+Spring Boot 2.0.5默认的elasticsearch版本很低，这里我们用最新版本6.4.1
+如果启动过程中出现:java.lang.NoClassDefFoundError: org/elasticsearch/common/transport/InetSocketTransportAddress
+则说明，elasticsearch依赖的jar包版本不一致，统一改成6.4.1即可
+另外，Spring Boot 2.0.5依赖的spring-data-elasticsearch版本是3.0.1，需要升级到3.1.0
+
+
+二, Spring Boot中集成Elasticsearch有4种方式：
+
+1,REST Client
+2,Jest
+3,Spring Data
+4,Spring Data Elasticsearch Repositories
+    1)  首先定义一个实体类:MonitorResult
+        这里定义MonitorResult实例表示一条过滤指令,在Elasticsearch 6.X 版本中，不建议使用type，
+        而且在7.X版本中将会彻底废弃type，这里，一个MonitorResult代表一个过滤指令，同时代表一条索引记录。
+        类比关系型数据库的话，Index相当于表，Document相当于记录
+    2)  然后,需要定义一个接口(EsRepository),继承ElasticsearchRepository
+        这里的Repository相当于DAO,service见EsRepositoryService
+
+    4.2使用ElasticsearchTemplate方式操作Elasticsearch
+        如:EsTemplateService,引入ElasticsearchTemplate,使用自带封装方法操作或者使用ElasticsearchTemplate.getClient(),通过原生es操作也可以
